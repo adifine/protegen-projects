@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Newsletter — Join Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#">
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="0" y="0" width="24" height="24" rx="6" fill="#1DB954"></rect>
+          <rect x="6" y="6" width="12" height="12" rx="3" fill="#B0413E"></rect>
+        </svg>
+        <span class="brand-name">GreenBrick</span>
+      </a>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-left">
+          <h1>Insights, tips and stories — straight to your inbox</h1>
+          <p class="lead">Sign up for our newsletter to get weekly updates, guides, and exclusive previews tailored for builders and creators.</p>
+          <div class="kpis">
+            <div class="kpi">
+              <div class="kpi-value">Weekly</div>
+              <div class="kpi-label">Digest</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-value">No spam</div>
+              <div class="kpi-label">Just value</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-value">Unsubscribe anytime</div>
+              <div class="kpi-label">Zero hassle</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="signup-card" aria-labelledby="signup-title">
+          <h2 id="signup-title">Join our newsletter</h2>
+          <p class="small">Two fields. One click. We won't share your email.</p>
+
+          <form id="signup-form" novalidate>
+            <label class="field">
+              <input type="text" name="name" id="name" required autocomplete="name" />
+              <span class="label">Your name</span>
+            </label>
+
+            <label class="field">
+              <input type="email" name="email" id="email" required autocomplete="email" />
+              <span class="label">Email address</span>
+            </label>
+
+            <button type="submit" class="btn-primary">Subscribe</button>
+            <button type="button" class="btn-secondary" id="demo-secondary">Learn more</button>
+          </form>
+
+          <div id="success" class="success" hidden>
+            <span class="material-symbols-outlined">check_circle</span>
+            <div>
+              <strong>You're in!</strong>
+              <div class="muted">Check your inbox for a welcome message.</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Made with <span class="heart">❤</span> — <a href="#">Privacy</a></div>
+    </footer>
+
+    <script>
+      (function(){
+        const form = document.getElementById('signup-form');
+        const success = document.getElementById('success');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+
+        function validateEmail(email){
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        form.addEventListener('submit', (e)=>{
+          e.preventDefault();
+          const name = nameInput.value.trim();
+          const email = emailInput.value.trim();
+          if(!name){
+            nameInput.focus();
+            nameInput.setAttribute('aria-invalid','true');
+            return;
+          }
+          if(!validateEmail(email)){
+            emailInput.focus();
+            emailInput.setAttribute('aria-invalid','true');
+            return;
+          }
+
+          form.reset();
+          form.style.display = 'none';
+          success.hidden = false;
+        });
+
+        // Secondary button demo behaviour
+        document.getElementById('demo-secondary').addEventListener('click', ()=>{
+          alert('This is a demo landing page for show-and-tell.');
+        });
+      })();
+    </script>
+  </body>
+</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Newsletter — Join Us</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#">
+        <svg width="36" height="36" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="0" y="0" width="24" height="24" rx="6" fill="#1DB954"></rect>
+          <rect x="6" y="6" width="12" height="12" rx="3" fill="#B0413E"></rect>
+        </svg>
+        <span class="brand-name">GreenBrick</span>
+      </a>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <div class="hero-left">
+          <h1>Insights, tips and stories — straight to your inbox</h1>
+          <p class="lead">Sign up for our newsletter to get weekly updates, guides, and exclusive previews tailored for builders and creators.</p>
+          <div class="kpis">
+            <div class="kpi">
+              <div class="kpi-value">Weekly</div>
+              <div class="kpi-label">Digest</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-value">No spam</div>
+              <div class="kpi-label">Just value</div>
+            </div>
+            <div class="kpi">
+              <div class="kpi-value">Unsubscribe anytime</div>
+              <div class="kpi-label">Zero hassle</div>
+            </div>
+          </div>
+        </div>
+
+        <aside class="signup-card" aria-labelledby="signup-title">
+          <h2 id="signup-title">Join our newsletter</h2>
+          <p class="small">Two fields. One click. We won't share your email.</p>
+
+          <form id="signup-form" novalidate>
+            <label class="field">
+              <input type="text" name="name" id="name" required autocomplete="name" />
+              <span class="label">Your name</span>
+            </label>
+
+            <label class="field">
+              <input type="email" name="email" id="email" required autocomplete="email" />
+              <span class="label">Email address</span>
+            </label>
+
+            <button type="submit" class="btn-primary">Subscribe</button>
+            <button type="button" class="btn-secondary" id="demo-secondary">Learn more</button>
+          </form>
+
+          <div id="success" class="success" hidden>
+            <span class="material-symbols-outlined">check_circle</span>
+            <div>
+              <strong>You're in!</strong>
+              <div class="muted">Check your inbox for a welcome message.</div>
+            </div>
+          </div>
+        </aside>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Made with <span class="heart">❤</span> — <a href="#">Privacy</a></div>
+    </footer>
+
+    <script>
+      (function(){
+        const form = document.getElementById('signup-form');
+        const success = document.getElementById('success');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+
+        function validateEmail(email){
+          return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        }
+
+        form.addEventListener('submit', (e)=>{
+          e.preventDefault();
+          const name = nameInput.value.trim();
+          const email = emailInput.value.trim();
+          if(!name){
+            nameInput.focus();
+            nameInput.setAttribute('aria-invalid','true');
+            return;
+          }
+          if(!validateEmail(email)){
+            emailInput.focus();
+            emailInput.setAttribute('aria-invalid','true');
+            return;
+          }
+
+          form.reset();
+          form.style.display = 'none';
+          success.hidden = false;
+        });
+
+        // Secondary button demo behaviour
+        document.getElementById('demo-secondary').addEventListener('click', ()=>{
+          alert('This is a demo landing page for show-and-tell.');
+        });
+      })();
+    </script>
+  </body>
+</html>
