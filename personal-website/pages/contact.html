@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Adi Fine</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    .contact-icons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin: 2rem 0 2.4rem;
+    }
+
+    .contact-icon-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      padding: 2rem 2.8rem;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(21, 94, 117, 0.1);
+      border-radius: 20px;
+      min-width: 190px;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .contact-icon-card:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .icon-circle {
+      width: 68px;
+      height: 68px;
+      border-radius: 50%;
+      background: rgba(14, 165, 183, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ocean-deep);
+    }
+
+    .icon-circle svg {
+      width: 30px;
+      height: 30px;
+    }
+
+    .icon-label {
+      font-family: 'Fraunces', serif;
+      font-size: 1.05rem;
+      color: var(--ocean-deep);
+      font-weight: 700;
+    }
+
+    .icon-value {
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <a href="../index.html" class="logo">Adi Fine</a>
+    <ul>
+      <li><a href="about.html">About</a></li>
+      <li><a href="work.html">Work</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="page-block sunset-block contact" id="contact">
+    <div class="content-wrap">
+      <h2>Let's Connect</h2>
+      <p>I'd love to hear about your project, team, or collaboration idea. Reach out and I'll get back to you soon.</p>
+
+      <div class="contact-icons">
+        <a class="contact-icon-card" href="mailto:hello@adi.design">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+            </svg>
+          </div>
+          <span class="icon-label">Email</span>
+          <span class="icon-value">hello@adi.design</span>
+        </a>
+
+        <a class="contact-icon-card" href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+          <div class="icon-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+          </div>
+          <span class="icon-label">LinkedIn</span>
+          <span class="icon-value">View Profile</span>
+        </a>
+      </div>
+
+      <div class="button-row">
+        <a class="btn btn-primary" href="mailto:hello@adi.design">Contact Me</a>
+        <a class="btn resume-btn" href="resume.html">View My Resume</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Adi Fine. All rights reserved.</p>
+  </footer>
+</body>
+</html>

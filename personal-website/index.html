@@ -7,32 +7,193 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Navigation -->
   <nav>
-    <div class="logo">Adi</div>
+    <a href="index.html" class="logo">Adi Fine</a>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="work.html">Work</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="pages/about.html">About</a></li>
+      <li><a href="pages/work.html">Work</a></li>
+      <li><a href="pages/contact.html">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Hero Section -->
   <section class="hero" id="home">
+    <canvas id="dandelion-canvas"></canvas>
     <div class="hero-content">
-      <h1>Adi</h1>
-      <p>Designer crafting beautiful and meaningful digital experiences</p>
+      <h1>Adi Fine</h1>
+      <p>User Experience Designer.</p>
       <div class="cta-buttons">
-        <a href="work.html" class="btn btn-primary">View My Work</a>
-        <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
+        <a href="pages/work.html" class="btn btn-primary">View My Work</a>
+        <a href="pages/contact.html" class="btn btn-secondary">Get in Touch</a>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <section class="page-block beach-block">
+    <div class="content-wrap">
+      <h2>Design With Intention</h2>
+      <p>
+        My process blends strategy, usability, and visual storytelling so every product feels effortless and emotionally resonant.
+      </p>
+    </div>
+  </section>
+
   <footer>
-    <p>&copy; 2024 Adi. All rights reserved. Designed with <span style="color: #ff6b6b;">♥</span> by me.</p>
+    <p>&copy; 2026 Adi. All rights reserved.</p>
   </footer>
+
+  <script>
+  (function () {
+    const canvas = document.getElementById('dandelion-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    let W = 0, H = 0;
+
+    function resize() {
+      W = canvas.width = canvas.offsetWidth;
+      H = canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    /* draw one dandelion */
+    function drawDandelion(cx, cy, r, alpha) {
+      if (alpha <= 0) return;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+
+      // Stem
+      ctx.beginPath();
+      ctx.moveTo(cx, cy + r * 0.15);
+      ctx.bezierCurveTo(cx - 3, cy + r * 0.8, cx - 6, cy + r * 1.4, cx - 10, cy + r * 2.2);
+      ctx.strokeStyle = 'rgba(70, 130, 95, 0.45)';
+      ctx.lineWidth = 1.5;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Spokes & seed puffs
+      const spokes = 16;
+      for (let i = 0; i < spokes; i++) {
+        const angle = (i / spokes) * Math.PI * 2 - Math.PI * 0.5;
+        const ex = cx + Math.cos(angle) * r;
+        const ey = cy + Math.sin(angle) * r;
+
+        ctx.beginPath();
+        ctx.moveTo(cx, cy);
+        ctx.lineTo(ex, ey);
+        ctx.strokeStyle = 'rgba(100, 165, 135, 0.35)';
+        ctx.lineWidth = 0.7;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(ex, ey, 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(195, 235, 220, 0.58)';
+        ctx.fill();
+
+        for (let f = 0; f < 6; f++) {
+          const fa = angle + (f / 6) * Math.PI * 2;
+          ctx.beginPath();
+          ctx.moveTo(ex + Math.cos(fa) * 4.5, ey + Math.sin(fa) * 4.5);
+          ctx.lineTo(ex + Math.cos(fa) * 10, ey + Math.sin(fa) * 10);
+          ctx.strokeStyle = 'rgba(160, 215, 195, 0.28)';
+          ctx.lineWidth = 0.45;
+          ctx.stroke();
+        }
+      }
+
+      // Golden centre
+      const g = ctx.createRadialGradient(cx - 1, cy - 1, 1, cx, cy, 7);
+      g.addColorStop(0, 'rgba(248, 230, 150, 0.9)');
+      g.addColorStop(1, 'rgba(210, 178, 95, 0.6)');
+      ctx.beginPath();
+      ctx.arc(cx, cy, 6.5, 0, Math.PI * 2);
+      ctx.fillStyle = g;
+      ctx.fill();
+
+      ctx.restore();
+    }
+
+    /* draw one floating seed */
+    function drawSeed(x, y, rot, alpha, size) {
+      if (alpha <= 0) return;
+      ctx.save();
+      ctx.globalAlpha = alpha;
+      ctx.translate(x, y);
+      ctx.rotate(rot);
+      ctx.scale(size, size);
+
+      const L = 26;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -L);
+      ctx.strokeStyle = 'rgba(90, 155, 120, 0.5)';
+      ctx.lineWidth = 0.9;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      ctx.beginPath();
+      ctx.arc(0, -L - 5, 6, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(195, 235, 220, 0.44)';
+      ctx.fill();
+
+      for (let f = 0; f < 7; f++) {
+        const fa = (f / 7) * Math.PI * 2;
+        ctx.beginPath();
+        ctx.moveTo(Math.cos(fa) * 6, -L - 5 + Math.sin(fa) * 6);
+        ctx.lineTo(Math.cos(fa) * 13, -L - 5 + Math.sin(fa) * 13);
+        ctx.strokeStyle = 'rgba(165, 215, 198, 0.28)';
+        ctx.lineWidth = 0.5;
+        ctx.stroke();
+      }
+
+      ctx.restore();
+    }
+
+    /* Three dandelions — different sizes, periods, vertical lanes, staggered phases */
+    const dandelions = [
+      { period: 26.7, phaseOff: 0.00, yFrac: 0.38, bobAmp: 22, bobFreq: 0.22, radFrac: 0.062, alpha: 0.52 },
+      { period: 21.3, phaseOff: 0.38, yFrac: 0.22, bobAmp: 12, bobFreq: 0.30, radFrac: 0.038, alpha: 0.42 },
+      { period: 30.0, phaseOff: 0.70, yFrac: 0.62, bobAmp: 16, bobFreq: 0.17, radFrac: 0.050, alpha: 0.46 },
+    ];
+
+    /* Floating seeds — 1.5× faster vx/vy/rv */
+    const seeds = Array.from({ length: 11 }, (_, i) => ({
+      x: (i / 11),
+      y: 0.1 + Math.random() * 0.8,
+      vx: 0.000143 + Math.random() * 0.000173,
+      vy: (Math.random() - 0.5) * 0.000075,
+      rot: Math.random() * Math.PI * 2,
+      rv: (Math.random() - 0.5) * 0.0042,
+      alpha: 0.18 + Math.random() * 0.22,
+      size: 0.6 + Math.random() * 0.55,
+    }));
+
+    function frame(ms) {
+      const t = ms * 0.001;
+      ctx.clearRect(0, 0, W, H);
+
+      // Draw each dandelion
+      for (const d of dandelions) {
+        const phase = ((t / d.period) + d.phaseOff) % 1;
+        const mx = W * (1.12 - phase * 1.28);
+        const my = H * d.yFrac + Math.sin(t * d.bobFreq) * d.bobAmp;
+        const fadeA = phase < 0.08 ? phase / 0.08 : phase > 0.92 ? (1 - phase) / 0.08 : 1;
+        drawDandelion(mx, my, Math.min(W, H) * d.radFrac, fadeA * d.alpha);
+      }
+
+      // Floating seeds
+      for (const s of seeds) {
+        s.x += s.vx;
+        s.y += s.vy;
+        s.rot += s.rv;
+        if (s.x > 1.1) { s.x = -0.06; s.y = 0.1 + Math.random() * 0.8; }
+        drawSeed(s.x * W, s.y * H, s.rot, s.alpha, s.size);
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    requestAnimationFrame(frame);
+  }());
+  </script>
 </body>
 </html>
