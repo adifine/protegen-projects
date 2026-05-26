@@ -53,6 +53,23 @@ nav {
   z-index: 1000;
 }
 
+body:has(.hero) nav,
+body:has(.sea-foam-block) nav {
+  background: var(--sea-foam);
+}
+
+body:has(.ocean-block) nav {
+  background: #ebfbff;
+}
+
+body:has(.sunset-block) nav {
+  background: #ffe7d6;
+}
+
+body:has(.beach-block) nav {
+  background: var(--sand);
+}
+
 nav .logo {
   display: inline-flex;
   align-items: center;
@@ -93,11 +110,11 @@ section {
 }
 
 .hero {
-  margin-top: var(--nav-offset);
+  margin-top: 0;
   min-height: 88vh;
   display: grid;
   place-items: center;
-  padding: 4rem 5%;
+  padding: calc(4rem + var(--nav-offset)) 5% 4rem;
   background: var(--sea-foam);
   position: relative;
   overflow: hidden;
@@ -467,7 +484,7 @@ footer {
 
   .hero {
     min-height: auto;
-    padding: 5rem 5% 4rem;
+    padding: calc(5rem + var(--nav-offset)) 5% 4rem;
   }
 
   .hero-content {
