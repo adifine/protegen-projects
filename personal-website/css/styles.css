@@ -1,5 +1,81 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap');
 
+/* ─── Password gate ───────────────────────────────────── */
+#auth-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--sea-foam);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.auth-box {
+  width: min(100%, 380px);
+  text-align: center;
+}
+
+.auth-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #53707f;
+  margin-bottom: 0.4rem;
+}
+
+.auth-heading {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(2rem, 6vw, 3rem);
+  color: var(--ocean-deep);
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+.auth-sub {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-bottom: 1.8rem;
+}
+
+#auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  align-items: center;
+}
+
+#auth-input {
+  width: 100%;
+  padding: 0.85rem 1.2rem;
+  border: 1px solid #17273F;
+  border-radius: 999px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 1rem;
+  color: var(--ink);
+  background: #fff;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+  text-align: center;
+}
+
+#auth-input:focus {
+  box-shadow: 0 0 0 3px rgba(23, 39, 63, 0.15);
+}
+
+.auth-btn {
+  width: 100%;
+}
+
+.auth-error {
+  margin-top: 0.8rem;
+  font-size: 0.85rem;
+  color: var(--coral);
+  min-height: 1.2em;
+}
+
 * {
   margin: 0;
   padding: 0;
