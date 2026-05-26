@@ -1,6 +1,6 @@
 (function () {
   const weatherCard = document.getElementById('weather-card');
-  const weatherLocation = document.getElementById('weather-location');
+  const weatherLocation = document.getElemen('weather-location');
   const weatherEmoji = document.getElementById('weather-emoji');
   const weatherTemperature = document.getElementById('weather-temperature');
   const weatherCondition = document.getElementById('weather-condition');
@@ -23,7 +23,7 @@
 
   function setWeatherState(state) {
     if (!weatherCard) return;
-    weatherLocation.textContent = state.location;
+    weatherLocation.textContent = state.local;
     weatherEmoji.textContent = state.emoji;
     weatherTemperature.textContent = state.temperature;
     weatherCondition.textContent = state.condition;
@@ -36,9 +36,9 @@
     if (!weatherCard) return;
 
     try {
-      const locationDetails = await getWeatherCoordinates();
-      const latitude = locationDetails.latitude;
-      const longitude = locationDetails.longitude;
+      const locationDetails = await getWeatherCoordinate();
+      const latitude = locationDetails.lat;
+      const longitude = locationDetails.long;
 
       const weatherUrl = new URL('https://api.open-meteo.com/v1/forecast');
       weatherUrl.search = new URLSearchParams({
@@ -79,7 +79,7 @@
     return {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
-      label: ''
+      label: position.coords.latitude + ", "+ position.coords.longitude
     };
   }
 
