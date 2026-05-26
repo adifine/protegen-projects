@@ -4,35 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Adi - Designer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="css/styles.css">
   <style>
-    .hero-content {
-      width: min(1120px, 100%);
-      max-width: none;
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(250px, 340px);
-      align-items: center;
-      gap: 2.5rem;
-      text-align: left;
-    }
-
-    .hero-copy {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .hero-copy p {
-      max-width: 34rem;
-    }
-
-    .hero-copy .cta-buttons {
-      justify-content: flex-start;
-    }
-
     .weather-card {
-      width: min(100%, 320px);
-      margin: 0 0 0 auto;
+      width: min(100%, 240px);
+      margin: 0;
       padding: 0.95rem 1rem;
       border-radius: 18px;
       border: 1px solid rgba(21, 94, 117, 0.14);
@@ -43,7 +21,6 @@
     }
 
     .weather-card-header {
-      display: block;
       margin-bottom: 0.6rem;
     }
 
@@ -57,6 +34,13 @@
       color: #53707f;
     }
 
+    .weather-card h2 {
+      margin: 0;
+      font-size: 1rem;
+      text-align: left;
+      color: var(--ocean-deep);
+    }
+
     .weather-temp {
       display: flex;
       align-items: baseline;
@@ -65,8 +49,8 @@
     }
 
     .weather-temp strong {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(1.45rem, 3vw, 2rem);
+      font-family: 'Montserrat', sans-serif;
+      font-size: 24px;
       color: var(--ocean-deep);
     }
 
@@ -75,14 +59,15 @@
       align-items: center;
       gap: 0.45rem;
       margin: 0;
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: #325160;
+      font-size: 16px;
+      font-weight: 400;
+      color: #555f6e;
+      justify-content: flex-start;
     }
 
     .weather-emoji {
       flex-shrink: 0;
-      font-size: 1rem;
+      font-size: 1.6rem;
       line-height: 1;
       filter: drop-shadow(0 4px 8px rgba(231, 111, 81, 0.16));
     }
@@ -95,8 +80,10 @@
       color: var(--muted);
     }
 
-    .weather-status {
-      min-height: 1.35em;
+    .hero-weather {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
     }
 
     .weather-card.is-loading .weather-temp,
@@ -106,47 +93,22 @@
     }
 
     @media (max-width: 760px) {
-      .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 1.8rem;
-      }
-
-      .hero-copy {
-        align-items: center;
-      }
-
-      .hero-copy p {
-        max-width: 100%;
-      }
-
-      .hero-copy .cta-buttons {
-        justify-content: center;
+      .hero-weather {
+        justify-content: flex-start;
       }
 
       .weather-card {
-        margin: 0 auto;
-        width: min(100%, 300px);
-        padding: 0.95rem 1rem;
-      }
-
-      .weather-card-header {
-        margin-bottom: 0.55rem;
-      }
-
-      .weather-card h2 {
-        font-size: 0.95rem;
-      }
-
-      .weather-emoji {
-        font-size: 0.95rem;
+        margin-top: 1.5rem;
+        width: min(100%, 320px);
       }
     }
   </style>
 </head>
 <body>
   <nav>
-    <a href="index.html" class="logo">Adi Fine</a>
+    <a href="index.html" class="logo" aria-label="Adi Fine home">
+      <img src="images/Adi-Fine-Logo.webp" alt="Adi Fine logo">
+    </a>
     <ul>
       <li><a href="pages/about.html">About</a></li>
       <li><a href="pages/work.html">Work</a></li>
@@ -159,26 +121,26 @@
     <div class="hero-content">
       <div class="hero-copy">
         <h1>Adi Fine</h1>
-        <p>User Experience Designer.</p>
+        <p>User experience designer dedicated to creating useful and enjoyable environments, both in the digital and built worlds.</p>
         <div class="cta-buttons">
           <a href="pages/work.html" class="btn btn-primary">View My Work</a>
           <a href="pages/contact.html" class="btn btn-secondary">Get in Touch</a>
         </div>
       </div>
-      <section class="weather-card is-loading" id="weather-card" aria-live="polite">
-        <div class="weather-card-header">
-          <div>
-            <span class="weather-card-label">Local Weather</span>
-            <h2 id="weather-location">Checking your location</h2>
+      <div class="hero-weather">
+        <section class="weather-card is-loading" id="weather-card" aria-live="polite">
+          <div class="weather-card-header">
+            <span class="weather-card-label">Current Weather</span>
+            <h2 id="weather-location">Your location</h2>
           </div>
-        </div>
-        <div class="weather-temp">
-          <strong id="weather-temperature">--&deg;F</strong>
-        </div>
-        <p class="weather-condition"><span class="weather-emoji" id="weather-emoji" aria-hidden="true">&#x231B;</span><span id="weather-condition">Loading current conditions...</span></p>
-        <p class="weather-meta" id="weather-meta">Using your browser location to fetch the latest forecast.</p>
-        <p class="weather-status" id="weather-status"></p>
-      </section>
+          <div class="weather-temp">
+            <strong id="weather-temperature">--&deg;F</strong>
+          </div>
+          <p class="weather-condition"><span class="weather-emoji" id="weather-emoji" aria-hidden="true">&#x231B;</span><span id="weather-condition">Loading current conditions...</span></p>
+          <p class="weather-meta" id="weather-meta">Powered by Open-Meteo using your local browser location.</p>
+          <p class="weather-status" id="weather-status"></p>
+        </section>
+      </div>
     </div>
   </section>
 
@@ -211,6 +173,7 @@
     }
 
     function setWeatherState(state) {
+      if (!weatherCard) return;
       weatherLocation.textContent = state.location;
       weatherEmoji.textContent = state.emoji;
       weatherTemperature.textContent = state.temperature;
@@ -220,107 +183,166 @@
       weatherCard.classList.toggle('is-loading', Boolean(state.loading));
     }
 
+    async function loadWeather() {
+      if (!weatherCard) return;
+
+      try {
+        const locationDetails = await getWeatherCoordinates();
+        const latitude = locationDetails.latitude;
+        const longitude = locationDetails.longitude;
+
+        const weatherUrl = new URL('https://api.open-meteo.com/v1/forecast');
+        weatherUrl.search = new URLSearchParams({
+          latitude: String(latitude),
+          longitude: String(longitude),
+          current_weather: 'true',
+          temperature_unit: 'fahrenheit',
+          timezone: 'auto'
+        }).toString();
+
+        const [data, location] = await Promise.all([
+          fetchJson(weatherUrl, 'Weather request failed.'),
+          locationDetails.label ? Promise.resolve(locationDetails.label) : loadLocationName(latitude, longitude)
+        ]);
+
+        const current = data.current_weather;
+        if (!current || typeof current.temperature !== 'number' || typeof current.weathercode !== 'number') {
+          throw new Error('Weather data is unavailable right now.');
+        }
+
+        const summary = describeWeather(current.weathercode);
+        setWeatherState({
+          location: location,
+          emoji: summary.emoji,
+          temperature: `${Math.round(current.temperature)}°F`,
+          condition: summary.label,
+          meta: 'Powered by Open-Meteo using your browser location.',
+          status: '',
+          loading: false
+        });
+      } catch (error) {
+        await loadIpWeather();
+      }
+    }
+
+    async function getWeatherCoordinates() {
+      const position = await getCurrentPosition();
+      return {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude,
+        label: ''
+      };
+    }
+
     async function loadLocationName(latitude, longitude) {
-      const geocodeUrl = new URL('https://geocoding-api.open-meteo.com/v1/reverse');
-      geocodeUrl.search = new URLSearchParams({
+      const reverseUrl = new URL('https://geocoding-api.open-meteo.com/v1/reverse');
+      reverseUrl.search = new URLSearchParams({
         latitude: String(latitude),
         longitude: String(longitude),
         language: 'en',
         format: 'json'
       }).toString();
 
-      const response = await fetch(geocodeUrl);
-      if (!response.ok) {
-        throw new Error('Location lookup failed.');
+      try {
+        const data = await fetchJson(reverseUrl, 'Reverse geocoding failed.');
+        const firstResult = data.results && data.results[0];
+        if (!firstResult) return 'Your area';
+        const locationParts = [firstResult.name, firstResult.admin1].filter(Boolean);
+        return locationParts.join(', ') || 'Your area';
+      } catch (error) {
+        return 'Your area';
       }
-
-      const data = await response.json();
-      const result = data && Array.isArray(data.results) ? data.results[0] : null;
-      if (!result) {
-        throw new Error('Location lookup returned no results.');
-      }
-
-      const city = result.city || result.name || result.locality || result.postcode || 'Your area';
-      const state = result.admin1 || result.state || result.country_code || '';
-      return state ? `${city}, ${state}` : city;
     }
 
-    async function loadWeather(position) {
-      const latitude = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      const weatherUrl = new URL('https://api.open-meteo.com/v1/forecast');
-      weatherUrl.search = new URLSearchParams({
-        latitude: String(latitude),
-        longitude: String(longitude),
-        current: 'temperature_2m,weather_code',
-        temperature_unit: 'fahrenheit'
-      }).toString();
-
-      const response = await fetch(weatherUrl);
+    async function fetchJson(url, errorMessage) {
+      const response = await fetch(url);
       if (!response.ok) {
-        throw new Error('Weather request failed.');
+        throw new Error(errorMessage);
       }
 
-      const data = await response.json();
-      const current = data.current;
-      if (!current || typeof current.temperature_2m !== 'number' || typeof current.weather_code !== 'number') {
-        throw new Error('Weather data is unavailable right now.');
-      }
+      return response.json();
+    }
 
-      const summary = describeWeather(current.weather_code);
-      const roundedTemp = Math.round(current.temperature_2m);
-      let locationName = city + ', ' + state;
+    async function loadIpWeather() {
+      const data = await fetchJson('https://wttr.in/?format=j1', 'IP weather lookup failed.');
+      const current = data.current_condition && data.current_condition[0];
+      const nearestArea = data.nearest_area && data.nearest_area[0];
+      const location = nearestArea && nearestArea.areaName && nearestArea.areaName[0] ? nearestArea.areaName[0].value : 'Your area';
+      const condition = current && current.weatherDesc && current.weatherDesc[0] ? current.weatherDesc[0].value : 'Current conditions';
+      const summary = describeWeatherText(condition);
 
-      try {
-        locationName = await loadLocationName(latitude, longitude);
-      } catch (error) {
-        locationName = city + ', ' + state;
+      if (!current || typeof current.temp_F === 'undefined') {
+        throw new Error('IP weather lookup failed.');
       }
 
       setWeatherState({
-        location: locationName,
+        location: location,
         emoji: summary.emoji,
-        temperature: `${roundedTemp}°F`,
-        condition: summary.label,
-        meta: 'Powered by Open-Meteo using your current browser location.',
+        temperature: `${Math.round(Number(current.temp_F))}°F`,
+        condition: condition,
+        meta: '',
         status: '',
         loading: false
       });
     }
 
-    function handleWeatherError(message) {
-      setWeatherState({
-        location: 'Local weather unavailable',
-        emoji: '📍',
-        temperature: '--°F',
-        condition: 'Location permission is needed for live weather.',
-        meta: 'Open-Meteo does not need an API key, but your browser location is required.',
-        status: message,
-        loading: false
+    function describeWeatherText(condition) {
+      const text = String(condition || '').toLowerCase();
+      if (text.includes('sun') || text.includes('clear')) return { emoji: '☀️' };
+      if (text.includes('cloud')) return { emoji: '☁️' };
+      if (text.includes('rain') || text.includes('drizzle')) return { emoji: '🌧️' };
+      if (text.includes('snow') || text.includes('sleet') || text.includes('ice')) return { emoji: '❄️' };
+      if (text.includes('storm') || text.includes('thunder')) return { emoji: '⛈️' };
+      if (text.includes('fog') || text.includes('mist')) return { emoji: '🌫️' };
+      return { emoji: '🌤️' };
+    }
+
+    function getCurrentPosition() {
+      return new Promise(function (resolve, reject) {
+        if (!navigator.geolocation) {
+          reject(new Error('Geolocation is not supported in this browser.'));
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(resolve, function (err) {
+          if (err.code === err.PERMISSION_DENIED) {
+            reject(Object.assign(err, { isDenied: true }));
+          } else {
+            reject(err);
+          }
+        }, {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 300000
+        });
       });
     }
 
-    if (!weatherCard || !navigator.geolocation) {
-      if (weatherCard) {
-        handleWeatherError('Your browser does not support location-based weather on this page.');
-      }
-      return;
+    if (weatherCard) {
+      loadWeather().catch(function (err) {
+        if (err && err.isDenied) {
+          setWeatherState({
+            location: 'Location off',
+            emoji: '📍',
+            temperature: '',
+            condition: 'Enable location to see your weather.',
+            meta: '',
+            status: '',
+            loading: false
+          });
+        } else {
+          setWeatherState({
+            location: 'Your area',
+            emoji: '📍',
+            temperature: '--°F',
+            condition: 'Weather unavailable right now.',
+            meta: '',
+            status: '',
+            loading: false
+          });
+        }
+      });
     }
-
-    navigator.geolocation.getCurrentPosition(
-      function (position) {
-        loadWeather(position).catch(function () {
-          handleWeatherError('Unable to fetch the current forecast right now.');
-        });
-      },
-      function (error) {
-        const denied = error && error.code === error.PERMISSION_DENIED;
-        handleWeatherError(denied
-          ? 'Location access was denied. Allow it to see your local forecast.'
-          : 'Your location could not be determined.');
-      },
-      { enableHighAccuracy: false, timeout: 10000, maximumAge: 300000 }
-    );
 
     const canvas = document.getElementById('dandelion-canvas');
     if (!canvas) return;
