@@ -65,7 +65,7 @@
         emoji: summary.emoji,
         temperature: `${Math.round(current.temperature)}°F`,
         condition: summary.label,
-        meta: 'Powered by Open-Meteo using your browser location.',
+        meta: '',
         status: '',
         loading: false
       });

@@ -517,10 +517,8 @@ footer {
   margin: 0;
   padding: 0.95rem 1rem;
   border-radius: 18px;
-  border: 1px solid rgba(21, 94, 117, 0.14);
-  background: rgba(255, 253, 248, 0.82);
-  box-shadow: 0 14px 30px rgba(21, 94, 117, 0.1);
-  backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: transparent;
   text-align: left;
 }
 
@@ -531,18 +529,18 @@ footer {
 .weather-card-label {
   display: block;
   margin-bottom: 0.15rem;
-  font-size: 0.72rem;
+  font-size: 0.6rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: #53707f;
+  color: #555f6e;
 }
 
 .weather-card h2 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 0.65rem;
   text-align: left;
-  color: var(--ocean-deep);
+  color: #555f6e;
 }
 
 .weather-temp {
@@ -554,16 +552,16 @@ footer {
 
 .weather-temp strong {
   font-family: 'Montserrat', sans-serif;
-  font-size: 24px;
-  color: var(--ocean-deep);
+  font-size: 1rem;
+  color: #555f6e;
 }
 
-.weather-condition {
+.weather-card .weather-condition {
   display: flex;
   align-items: center;
   gap: 0.45rem;
   margin: 0;
-  font-size: 16px;
+  font-size: 0.6rem;
   font-weight: 400;
   color: #555f6e;
   justify-content: flex-start;
@@ -571,17 +569,13 @@ footer {
 
 .weather-emoji {
   flex-shrink: 0;
-  font-size: 1.6rem;
+  font-size: 0.85rem;
   line-height: 1;
-  filter: drop-shadow(0 4px 8px rgba(231, 111, 81, 0.16));
 }
 
 .weather-meta,
 .weather-status {
-  margin: 0.45rem 0 0;
-  font-size: 12px;
-  line-height: 1.45;
-  color: var(--muted);
+  display: none;
 }
 
 .hero-weather {
